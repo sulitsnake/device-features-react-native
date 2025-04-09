@@ -19,8 +19,8 @@ export default function HomeScreen() {
     return unsubscribe;
   }, [navigation]);
 
-  const handleRemove = async (id: string) => {
-    const updated = entries.filter(e => e.id !== id);
+  const handleRemove = async (photoUri: string) => {
+    const updated = entries.filter(e => e.photoUri !== photoUri);
     setEntries(updated);
     await saveEntries(updated);
   };
@@ -32,9 +32,9 @@ export default function HomeScreen() {
       ) : (
         <FlatList
           data={entries}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => item.photoUri + index} // fallback key
           renderItem={({ item }) => (
-            <TravelEntryItem entry={item} onRemove={() => handleRemove(item.id)} />
+            <TravelEntryItem entry={item} onRemove={() => handleRemove(item.photoUri)} />
           )}
         />
       )}

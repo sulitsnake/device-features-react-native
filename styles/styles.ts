@@ -8,9 +8,14 @@ export default StyleSheet.create({
   camera: {
     flex: 1,
   },
+
   preview: {
-    flex: 1,
+    width: '100%',
+    height: 300, // or 250 if you want it smaller
+    resizeMode: 'cover',
+    marginBottom: 10,
   },
+
   text: {
     marginVertical: 4,
     fontSize: 16,
